@@ -17,9 +17,14 @@
     "finish-args": [
         "--device=all",
         "--filesystem=home:ro",
+        "--filesystem=~/.vice:create",
         "--share=ipc",
         "--socket=pulseaudio",
-        "--socket=x11"
+        "--socket=x11",
+        "--filesystem=xdg-run/dconf", 
+        "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", 
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"        
     ],
     "modules": [
         {
