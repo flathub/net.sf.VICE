@@ -50,6 +50,7 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release date="2018-05-20" version="3.2"/>
     <release date="2018-02-24" version="3.1"/>
   </releases>
 </application>
