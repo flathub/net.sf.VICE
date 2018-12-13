@@ -23,6 +23,7 @@
   <url type="bugtracker">https://sourceforge.net/p/vice-emu/bugs/</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release date="2018-12-12" version="3.3"/>
     <release date="2018-05-20" version="3.2"/>
     <release date="2018-02-24" version="3.1"/>
   </releases>
