@@ -104,12 +104,7 @@ modules:
       - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
       - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
       - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
-      - install -Dm644 net.sf.VICE.C64.desktop /app/share/applications/net.sf.VICE.C64.desktop
-      - install -Dm644 net.sf.VICE.C128.desktop /app/share/applications/net.sf.VICE.C128.desktop
-      - install -Dm644 net.sf.VICE.CBM2.desktop /app/share/applications/net.sf.VICE.CBM2.desktop
-      - install -Dm644 net.sf.VICE.PET.desktop /app/share/applications/net.sf.VICE.PET.desktop
-      - install -Dm644 net.sf.VICE.Plus4.desktop /app/share/applications/net.sf.VICE.Plus4.desktop
-      - install -Dm644 net.sf.VICE.VIC.desktop /app/share/applications/net.sf.VICE.VIC.desktop
+      - install -Dm644 -t /app/share/applications net.sf.VICE.*.desktop
     sources: 
       - type: file
         path: net.sf.VICE.appdata.xml
