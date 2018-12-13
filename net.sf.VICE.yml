@@ -13,7 +13,6 @@ build-options:
 finish-args:
   - --device=all
   - --filesystem=home:ro
-  - --filesystem=~/.vice:create
   - --share=ipc
   - --socket=pulseaudio
   - --socket=x11
@@ -70,9 +69,8 @@ modules:
             tag: mkfontscale-1.1.2
   
   - name: xa
-    buildsystem: simple
-    build-commands: 
-      - make && make install DESTDIR=/app
+    no-autogen: true
+    make-install-args: [ DESTDIR=/app ]  
     cleanup: [ '*' ]
     sources:
       - type: archive
@@ -80,10 +78,10 @@ modules:
         sha256: 3b97d2fe8891336676ca28ff127b69e997f0b5accf2c7009b4517496929b462a
 
   - name: vice
+    subdir: vice
     cleanup: 
       - /cache
-      - /lib/debug/source
-      - /lib64/vice/doc
+      - /lib/vice/doc
       - /share/fonts
       - /share/info
       - /share/man                
@@ -91,24 +89,52 @@ modules:
       - --enable-native-gtk3ui
       - --disable-arch
       - --without-oss
-    post-install: 
+    sources: 
+      - type: svn
+        url: https://svn.code.sf.net/p/vice-emu/code/trunk
+        revision: '35864'
+
+      - type: shell
+        # Stop using wrong libdir
+        commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
+
+  - name: appdata
+    buildsystem: simple
+    build-commands: 
       - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
-      - install -Dm644 net.sf.VICE.desktop /app/share/applications/net.sf.VICE.desktop
       - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
       - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
+      - install -Dm644 net.sf.VICE.C64.desktop /app/share/applications/net.sf.VICE.C64.desktop
+      - install -Dm644 net.sf.VICE.C128.desktop /app/share/applications/net.sf.VICE.C128.desktop
+      - install -Dm644 net.sf.VICE.CBM2.desktop /app/share/applications/net.sf.VICE.CBM2.desktop
+      - install -Dm644 net.sf.VICE.PET.desktop /app/share/applications/net.sf.VICE.PET.desktop
+      - install -Dm644 net.sf.VICE.Plus4.desktop /app/share/applications/net.sf.VICE.Plus4.desktop
+      - install -Dm644 net.sf.VICE.VIC.desktop /app/share/applications/net.sf.VICE.VIC.desktop
     sources: 
-      - type: archive
-        url: https://ayera.dl.sourceforge.net/project/vice-emu/releases/vice-3.2.tar.gz
-        sha256: 28d99f5e110720c97ef16d8dd4219cf9a67661d58819835d19378143697ba523
-      
       - type: file
         path: net.sf.VICE.appdata.xml
-      
-      - type: file
-        path: net.sf.VICE.desktop
-      
+            
       - type: file
         path: net.sf.VICE.png
       
       - type: file
         path: net.sf.VICE-64.png
+
+      - type: file
+        path: net.sf.VICE.C64.desktop
+
+      - type: file
+        path: net.sf.VICE.C128.desktop
+
+      - type: file
+        path: net.sf.VICE.CBM2.desktop
+
+      - type: file
+        path: net.sf.VICE.PET.desktop
+
+      - type: file
+        path: net.sf.VICE.Plus4.desktop
+
+      - type: file
+        path: net.sf.VICE.VIC.desktop
+  
