@@ -2,7 +2,7 @@
 Name=VICE (C64)
 Comment=Commodore 64 Emulator
 Exec=x64
-Icon=net.sf.VICE
+Icon=net.sf.VICE.C64
 Terminal=false
 StartupNotify=true
 Type=Application
