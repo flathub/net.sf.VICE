@@ -1,15 +1,13 @@
 app-id: net.sf.VICE
 branch: stable
-command: x64
+command: 'x64'
 runtime: org.freedesktop.Platform
 runtime-version: 18.08
 sdk: org.freedesktop.Sdk
 build-options: 
-  cflags: -O3 -g
-  cxxflags: -O3 -g
   arch: 
     x86_64: 
-      cflags: -O3 -g -m64 -march=nocona -mtune=core2 -ffast-math    
+      cflags: -m64 -march=nocona -mtune=core2 -ffast-math    
 finish-args:
   - --device=all
   - --filesystem=home:ro
