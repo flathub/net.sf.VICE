@@ -12,7 +12,7 @@ build-options:
       cflags: -O3 -g -m64 -march=nocona -mtune=core2 -ffast-math    
 finish-args:
   - --device=all
-  - --filesystem=home:ro
+  - --filesystem=home
   - --share=ipc
   - --socket=pulseaudio
   - --socket=x11
@@ -103,9 +103,7 @@ modules:
     build-commands: 
       - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
       - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
-      - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.C64.png
       - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
-      - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.C64.png
       - install -Dm644 -t /app/share/applications net.sf.VICE.*.desktop
     sources: 
       - type: file
@@ -118,7 +116,7 @@ modules:
         path: net.sf.VICE-64.png
 
       - type: file
-        path: net.sf.VICE.C64.desktop
+        path: net.sf.VICE.desktop
 
       - type: file
         path: net.sf.VICE.C128.desktop
