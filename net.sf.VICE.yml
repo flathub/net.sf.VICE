@@ -93,7 +93,6 @@ modules:
       - type: svn
         url: https://svn.code.sf.net/p/vice-emu/code/trunk
         revision: '35872'
-
       - type: shell
         # Stop using wrong libdir
         commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
@@ -102,9 +101,9 @@ modules:
     buildsystem: simple
     build-commands: 
       - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
+      - install -Dm644 -t /app/share/applications net.sf.VICE*.desktop
       - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
       - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
-      - install -Dm644 -t /app/share/applications net.sf.VICE.*.desktop
     sources: 
       - type: file
         path: net.sf.VICE.appdata.xml
