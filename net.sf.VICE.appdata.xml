@@ -4,9 +4,10 @@
   <launchable type="desktop-id">net.sf.VICE.desktop</launchable>
   <name>VICE</name>
   <summary>Versatile Commodore Emulator</summary>
+  <developer_name>VICE</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <developer_name>VICE</developer_name>
+  <translation/>
   <description>
     <p>
       VICE is a free and cross platform emulator for Commodore's 8-bit computers.
@@ -23,6 +24,7 @@
   <url type="bugtracker">https://sourceforge.net/p/vice-emu/bugs/</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release date="2018-05-12" version="3.3-r1"/>
     <release date="2018-12-12" version="3.3"/>
     <release date="2018-05-20" version="3.2"/>
     <release date="2018-02-24" version="3.1"/>
