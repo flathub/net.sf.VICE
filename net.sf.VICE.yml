@@ -2,7 +2,7 @@ app-id: net.sf.VICE
 branch: stable
 command: x64
 runtime: org.freedesktop.Platform
-runtime-version: 18.08
+runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
 build-options: 
   cflags: -O3 -g
@@ -81,6 +81,7 @@ modules:
     subdir: vice
     cleanup: 
       - /cache
+      - /lib/debug
       - /lib/vice/doc
       - /share/fonts
       - /share/info
