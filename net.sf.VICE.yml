@@ -1,8 +1,8 @@
 app-id: net.sf.VICE
 branch: stable
-command: x64
+command: x64sc
 runtime: org.freedesktop.Platform
-runtime-version: 18.08
+runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
 build-options: 
   cflags: -O3 -g
@@ -21,6 +21,8 @@ finish-args:
   - --talk-name=ca.desrt.dconf 
   - --env=DCONF_USER_CONFIG_DIR=.config/dconf        
 modules: 
+  - shared-modules/glew/glew.json
+  - shared-modules/glu/glu-9.json
   - name: xfont-utils
     modules: 
       - name: font-util
@@ -74,8 +76,8 @@ modules:
     cleanup: [ '*' ]
     sources:
       - type: archive
-        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.9.tar.gz
-        sha256: 8d3097d3b75adf4305d7d5c8e8f2568a7176cb348bcc50006cfc58378540c555
+        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.10.tar.gz
+        sha256: 867b5b26b6524be8bcfbad8820ab3efe422b3e0cc9775dcb743284778868ba78
 
   - name: vice
     subdir: vice
@@ -92,7 +94,7 @@ modules:
     sources: 
       - type: svn
         url: https://svn.code.sf.net/p/vice-emu/code/trunk
-        revision: '35872'
+        revision: '37296'
       - type: shell
         # Stop using wrong libdir
         commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
