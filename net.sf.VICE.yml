@@ -5,11 +5,9 @@ runtime: org.freedesktop.Platform
 runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
 build-options: 
-  cflags: -O3 -g
-  cxxflags: -O3 -g
   arch: 
     x86_64: 
-      cflags: -O3 -g -m64 -march=nocona -mtune=core2 -ffast-math    
+      cflags: -m64 -march=nocona -mtune=core2 -ffast-math    
 finish-args:
   - --device=all
   - --filesystem=home
@@ -83,6 +81,7 @@ modules:
     subdir: vice
     cleanup: 
       - /cache
+      - /lib/debug
       - /lib/vice/doc
       - /share/fonts
       - /share/info
