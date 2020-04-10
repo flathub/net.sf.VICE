@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=VICE (C64)
 Comment=Commodore 64 Emulator
-Exec=x64
+Exec=x64sc
 Icon=net.sf.VICE
 Terminal=false
 StartupNotify=true
