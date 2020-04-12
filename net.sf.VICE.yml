@@ -88,15 +88,14 @@ modules:
       - /share/man                
     config-opts: 
       - --enable-native-gtk3ui
+      - --enable-sandbox-mode
+      - --enable-x64
       - --disable-arch
       - --without-oss
     sources: 
       - type: svn
         url: https://svn.code.sf.net/p/vice-emu/code/trunk
-        revision: '37296'
-      - type: shell
-        # Stop using wrong libdir
-        commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
+        revision: '37613'
 
   - name: appdata
     buildsystem: simple
