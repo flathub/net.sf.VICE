@@ -1,8 +1,7 @@
 app-id: net.sf.VICE
-branch: stable
 command: x64sc
 runtime: org.freedesktop.Platform
-runtime-version: '19.08'
+runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
 build-options: 
   arch: 
@@ -13,6 +12,7 @@ finish-args:
   - --filesystem=home
   - --share=ipc
   - --socket=pulseaudio
+  - --socket=wayland
   - --socket=x11
   - --filesystem=xdg-run/dconf 
   - --filesystem=~/.config/dconf:ro
@@ -74,8 +74,8 @@ modules:
     cleanup: [ '*' ]
     sources:
       - type: archive
-        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.10.tar.gz
-        sha256: 867b5b26b6524be8bcfbad8820ab3efe422b3e0cc9775dcb743284778868ba78
+        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.11.tar.gz
+        sha256: 32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d
 
   - name: vice
     subdir: vice
@@ -88,34 +88,35 @@ modules:
       - /share/man                
     config-opts: 
       - --enable-native-gtk3ui
-      - --enable-sandbox-mode
-      - --enable-x64
       - --disable-arch
       - --without-oss
     sources: 
       - type: svn
         url: https://svn.code.sf.net/p/vice-emu/code/trunk
-        revision: '37613'
+        revision: '37296'
+      - type: shell
+        # Stop using wrong libdir
+        commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
 
   - name: appdata
     buildsystem: simple
     build-commands: 
-      - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
-      - install -Dm644 -t /app/share/applications net.sf.VICE*.desktop
-      - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
-      - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
+      - install -D -m644 -t ${FLATPAK_DEST}/share/metainfo/ ${FLATPAK_ID}.appdata.xml
+      - install -D -m644 -t ${FLATPAK_DEST}/share/applications/ ${FLATPAK_ID}*.desktop
+      - install -D -m644 -t ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/ ${FLATPAK_ID}.png
+      - install -D -m644 -t ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/ ${FLATPAK_ID}-64.png 
     sources: 
       - type: file
         path: net.sf.VICE.appdata.xml
             
       - type: file
+        path: net.sf.VICE.desktop
+
+      - type: file
         path: net.sf.VICE.png
       
       - type: file
         path: net.sf.VICE-64.png
-
-      - type: file
-        path: net.sf.VICE.desktop
 
       - type: file
         path: net.sf.VICE.C128.desktop
