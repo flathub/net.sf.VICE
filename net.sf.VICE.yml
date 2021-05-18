@@ -1,117 +1,121 @@
 app-id: net.sf.VICE
-branch: stable
 command: x64sc
 runtime: org.freedesktop.Platform
-runtime-version: '19.08'
+runtime-version: '20.08'
 sdk: org.freedesktop.Sdk
-build-options: 
-  arch: 
-    x86_64: 
-      cflags: -m64 -march=nocona -mtune=core2 -ffast-math    
+build-options:
+  arch:
+    x86_64:
+      cflags: -m64 -march=nocona -mtune=core2 -ffast-math
 finish-args:
   - --device=all
   - --filesystem=home
   - --share=ipc
   - --socket=pulseaudio
   - --socket=x11
-  - --filesystem=xdg-run/dconf 
-  - --filesystem=~/.config/dconf:ro
-  - --talk-name=ca.desrt.dconf 
-  - --env=DCONF_USER_CONFIG_DIR=.config/dconf        
-modules: 
+  - --metadata=X-DConf=migrate-path=/net/sf/VICE/
+modules:
   - shared-modules/glew/glew.json
   - shared-modules/glu/glu-9.json
   - name: xfont-utils
-    modules: 
+    modules:
       - name: font-util
         cleanup: [ '*' ]
-        config-opts: [ --disable-static ]            
-        sources: 
+        config-opts: [ --disable-static ]
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/xorg/font/util
             tag: font-util-1.3.1
-      
+
       - name: libfontenc
         cleanup: [ '*' ]
-        config-opts: [ --disable-static ]            
-        sources: 
+        config-opts: [ --disable-static ]
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/git/xorg/lib/libfontenc
             tag: libfontenc-1.1.3
-      
+
       - name: libXfont
         cleanup: [ '*' ]
-        config-opts: [ --disable-static ]            
-        sources: 
+        config-opts: [ --disable-static ]
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/xorg/lib/libXfont
             tag: libXfont-1.5.4
-      
+
       - name: bdftopcf
         cleanup: [ '*' ]
-        sources: 
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/xorg/app/bdftopcf
             tag: bdftopcf-1.1
-      
+
       - name: mkfontdir
         cleanup: [ '*' ]
-        sources: 
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/xorg/app/mkfontdir
             tag: mkfontdir-1.0.7
-      
+
       - name: mkfontscale
         cleanup: [ '*' ]
-        sources: 
+        sources:
           - type: git
             url: git://anongit.freedesktop.org/xorg/app/mkfontscale
             tag: mkfontscale-1.1.2
-  
+
   - name: xa
     no-autogen: true
-    make-install-args: [ DESTDIR=/app ]  
+    make-install-args: [ DESTDIR=/app ]
     cleanup: [ '*' ]
     sources:
       - type: archive
-        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.10.tar.gz
-        sha256: 867b5b26b6524be8bcfbad8820ab3efe422b3e0cc9775dcb743284778868ba78
+        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.11.tar.gz
+        sha256: 32f2164c99e305218e992970856dd8e2309b5cb6ac4758d7b2afe3bfebc9012d
+
+  - name: dos2unix
+    buildsystem: simple
+    build-commands:
+      - make prefix=$FLATPAK_DEST install
+    cleanup:
+      - '*'
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/dos2unix/dos2unix/7.4.2/dos2unix-7.4.2.tar.gz
+        sha256: 6035c58df6ea2832e868b599dfa0d60ad41ca3ecc8aa27822c4b7a9789d3ae01
 
   - name: vice
-    subdir: vice
-    cleanup: 
+    cleanup:
       - /cache
       - /lib/debug
       - /lib/vice/doc
       - /share/fonts
       - /share/info
-      - /share/man                
-    config-opts: 
+      - /share/man
+    config-opts:
+      - --disable-pdf-docs
       - --enable-native-gtk3ui
       - --disable-arch
       - --without-oss
-    sources: 
-      - type: svn
-        url: https://svn.code.sf.net/p/vice-emu/code/trunk
-        revision: '37296'
-      - type: shell
-        # Stop using wrong libdir
-        commands: [ sed 's/lib64/lib/g' -i vice/configure.proto ]
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.5.tar.gz
+        sha256: 56b978faaeb8b2896032bd604d03c3501002187eef1ca58ceced40f11a65dc0e
 
   - name: appdata
     buildsystem: simple
-    build-commands: 
-      - install -Dm644 net.sf.VICE.appdata.xml /app/share/appdata/net.sf.VICE.appdata.xml
-      - install -Dm644 -t /app/share/applications net.sf.VICE*.desktop
-      - install -Dm644 net.sf.VICE.png /app/share/icons/hicolor/128x128/apps/net.sf.VICE.png
-      - install -Dm644 net.sf.VICE-64.png /app/share/icons/hicolor/64x64/apps/net.sf.VICE.png
-    sources: 
+    build-commands:
+      - install -D -m644 -t ${FLATPAK_DEST}/share/metainfo/ ${FLATPAK_ID}.appdata.xml
+      - install -D -m644 -t ${FLATPAK_DEST}/share/applications/ ${FLATPAK_ID}*.desktop
+      - install -D -m644 -t ${FLATPAK_DEST}/share/icons/hicolor/128x128/apps/ ${FLATPAK_ID}.png
+      - install -D -m644 ${FLATPAK_ID}-64.png ${FLATPAK_DEST}/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.png
+    sources:
       - type: file
         path: net.sf.VICE.appdata.xml
-            
+
       - type: file
         path: net.sf.VICE.png
-      
+
       - type: file
         path: net.sf.VICE-64.png
 
@@ -132,4 +136,3 @@ modules:
 
       - type: file
         path: net.sf.VICE.VIC.desktop
-  
