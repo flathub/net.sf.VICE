@@ -83,7 +83,6 @@ modules:
   - name: vice
     cleanup:
       - /cache
-      - /lib/debug
       - /lib/vice/doc
       - /share/fonts
       - /share/info
@@ -95,8 +94,8 @@ modules:
       - --without-oss
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.5.tar.gz
-        sha256: 56b978faaeb8b2896032bd604d03c3501002187eef1ca58ceced40f11a65dc0e
+        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.6.tar.gz
+        sha256: 65bfe55cce627db9b5a0ac7876a90c087e9fe86e9f5517e809446c4064a2d3fd
 
   - name: appdata
     buildsystem: simple
