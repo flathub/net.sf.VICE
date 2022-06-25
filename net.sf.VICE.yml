@@ -20,7 +20,7 @@ modules:
         config-opts: [ --disable-static ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/xorg/font/util
+            url: https://gitlab.freedesktop.org/xorg/font/util
             tag: font-util-1.3.1
 
       - name: libfontenc
@@ -28,7 +28,7 @@ modules:
         config-opts: [ --disable-static ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/git/xorg/lib/libfontenc
+            url: https://gitlab.freedesktop.org/xorg/lib/libfontenc
             tag: libfontenc-1.1.3
 
       - name: libXfont
@@ -36,28 +36,28 @@ modules:
         config-opts: [ --disable-static ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/xorg/lib/libXfont
+            url: https://gitlab.freedesktop.org/xorg/lib/libXfont
             tag: libXfont-1.5.4
 
       - name: bdftopcf
         cleanup: [ '*' ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/xorg/app/bdftopcf
+            url: https://gitlab.freedesktop.org/xorg/util/bdftopcf
             tag: bdftopcf-1.1
 
       - name: mkfontdir
         cleanup: [ '*' ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/xorg/app/mkfontdir
+            url: https://gitlab.freedesktop.org/xorg/app/mkfontdir
             tag: mkfontdir-1.0.7
 
       - name: mkfontscale
         cleanup: [ '*' ]
         sources:
           - type: git
-            url: git://anongit.freedesktop.org/xorg/app/mkfontscale
+            url: https://gitlab.freedesktop.org/xorg/app/mkfontscale
             tag: mkfontscale-1.1.2
 
   - name: xa
@@ -66,8 +66,8 @@ modules:
     cleanup: [ '*' ]
     sources:
       - type: archive
-        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.12.tar.gz
-        sha256: f8fd1536012d676fc6cbfcdd6a91793e564c89b6ef747f8db8f467c178fb0704
+        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.13.tar.gz
+        sha256: a9477af150b6c8a91cd3d41e1cf8c9df552d383326495576830271ca4467bd86
 
   - name: dos2unix
     buildsystem: simple
@@ -88,9 +88,9 @@ modules:
       - /share/info
       - /share/man
     config-opts:
-      - --disable-pdf-docs
+      - --enable-external-ffmpeg
       - --enable-native-gtk3ui
-      - --disable-arch
+      - --disable-pdf-docs
       - --without-oss
     sources:
       - type: archive
