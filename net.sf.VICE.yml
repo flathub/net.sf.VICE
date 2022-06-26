@@ -35,7 +35,7 @@ modules:
     cleanup:
       - /lib/codecs/include
       - /lib/codecs/lib/pkgconfig
-      
+
   - name: ffmpeg
     build-options:
       env: 
@@ -179,6 +179,7 @@ modules:
       - /share/man
     config-opts:
       - --enable-native-gtk3ui
+      - --enable-external-ffmpeg
       - --disable-pdf-docs
       - --without-oss
     sources:
