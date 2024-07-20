@@ -7,7 +7,7 @@
   <developer_name>VICE</developer_name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <translation/>
+  <translation type="gettext">VICE</translation>
   <description>
     <p>
       VICE is a free and cross platform emulator for Commodore's 8-bit computers.
@@ -16,7 +16,7 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/digitalstreamio/flatpak-images/master/net.sf.VICE/screenshots/1.png</image>
-      <caption><!-- Describe this screenshot in less than ~10 words --></caption>
+      <caption>The main window showing the application in action</caption>
     </screenshot>
   </screenshots>
   <update_contact>digitalstreamio@gmail.com</update_contact>
