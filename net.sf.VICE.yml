@@ -1,7 +1,7 @@
 app-id: net.sf.VICE
 command: x64sc
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --device=all
@@ -23,7 +23,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: bfc87b7a330f75f5c9a21e56081e4b20344f139e
+        commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
     cleanup:
       - /include
       - /lib/pkgconfig
@@ -84,8 +84,8 @@ modules:
       - --enable-decoder=theora
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
-        sha256: eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02
+        url: https://www.ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz
+        sha256: bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff
     cleanup:
       - /lib/codecs/include
       - /lib/codecs/lib/pkgconfig
@@ -99,7 +99,7 @@ modules:
         sources:
           - type: git
             url: https://gitlab.freedesktop.org/xorg/font/util
-            tag: font-util-1.3.1
+            tag: font-util-1.4.1
 
       - name: libfontenc
         cleanup: [ '*' ]
@@ -107,7 +107,7 @@ modules:
         sources:
           - type: git
             url: https://gitlab.freedesktop.org/xorg/lib/libfontenc
-            tag: libfontenc-1.1.3
+            tag: libfontenc-1.1.8
 
       - name: libXfont
         cleanup: [ '*' ]
@@ -122,7 +122,7 @@ modules:
         sources:
           - type: git
             url: https://gitlab.freedesktop.org/xorg/util/bdftopcf
-            tag: bdftopcf-1.1
+            tag: bdftopcf-1.1.1
 
       - name: mkfontdir
         cleanup: [ '*' ]
@@ -136,7 +136,7 @@ modules:
         sources:
           - type: git
             url: https://gitlab.freedesktop.org/xorg/app/mkfontscale
-            tag: mkfontscale-1.1.2
+            tag: mkfontscale-1.2.3
 
   - name: xa
     no-autogen: true
@@ -144,8 +144,8 @@ modules:
     cleanup: [ '*' ]
     sources:
       - type: archive
-        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.3.13.tar.gz
-        sha256: a9477af150b6c8a91cd3d41e1cf8c9df552d383326495576830271ca4467bd86
+        url: http://www.floodgap.com/retrotech/xa/dists/xa-2.4.1.tar.gz
+        sha256: 63c12a6a32a8e364f34f049d8b2477f4656021418f08b8d6b462be0ed3be3ac3
 
   - name: dos2unix
     buildsystem: simple
@@ -159,21 +159,21 @@ modules:
         sha256: 6035c58df6ea2832e868b599dfa0d60ad41ca3ecc8aa27822c4b7a9789d3ae01
 
   - name: vice
+    config-opts:
+      - --enable-native-gtk3ui
+      - --enable-external-ffmpeg
+      - --disable-pdf-docs
+      - --without-oss
     cleanup:
       - /cache
       - /lib/vice/doc
       - /share/fonts
       - /share/info
       - /share/man
-    config-opts:
-      - --enable-native-gtk3ui
-      - --enable-external-ffmpeg
-      - --disable-pdf-docs
-      - --without-oss
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.6.1.tar.gz
-        sha256: 20df84c851aaf2f5000510927f6d31b32f269916d351465c366dc0afc9dc150c
+        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.8.tar.gz
+        sha256: 1d7dc4d0f2bbcc2a871bb954ff4a5df63048dea9c16f5f1e9bc8260fa41a1004
 
   - name: appdata
     buildsystem: simple
