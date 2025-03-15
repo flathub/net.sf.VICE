@@ -158,6 +158,24 @@ modules:
         url: https://downloads.sourceforge.net/project/dos2unix/dos2unix/7.4.2/dos2unix-7.4.2.tar.gz
         sha256: 6035c58df6ea2832e868b599dfa0d60ad41ca3ecc8aa27822c4b7a9789d3ae01
 
+  - name: check
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz
+        sha256: a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a
+
+
+  - name: libevdev
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.3.tar.xz
+        sha256: abf1aace86208eebdd5d3550ffded4c8d73bb405b796d51c389c9d0604cbcfbf
+
+
+
+
   - name: vice
     config-opts:
       - --enable-native-gtk3ui
@@ -172,8 +190,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.8.tar.gz
-        sha256: 1d7dc4d0f2bbcc2a871bb954ff4a5df63048dea9c16f5f1e9bc8260fa41a1004
+        url: https://downloads.sourceforge.net/project/vice-emu/releases/vice-3.9.tar.gz
+        sha256: 40202b63455e26b87ecc63eb5a52322c6fa3f57cab12acf0c227cf9f4daec370
 
   - name: appdata
     buildsystem: simple

@@ -24,6 +24,7 @@
   <url type="bugtracker">https://sourceforge.net/p/vice-emu/bugs/</url>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release date="2024-12-24" version="3.9"/>
     <release date="2023-12-24" version="3.8"/>
     <release date="2022-01-24" version="3.6.1"/>
     <release date="2021-12-24" version="3.6"/>
