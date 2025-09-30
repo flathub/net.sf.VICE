@@ -1,7 +1,7 @@
 app-id: net.sf.VICE
 command: x64sc
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 finish-args:
   - --device=all
