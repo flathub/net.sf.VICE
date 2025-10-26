@@ -160,6 +160,11 @@ modules:
 
   - name: check
     buildsystem: autotools
+    cleanup:
+      - /include
+      - /share/doc/check
+      - '*.a'
+      - '*.la'
     sources:
       - type: archive
         url: https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz
@@ -168,6 +173,10 @@ modules:
 
   - name: libevdev
     buildsystem: meson
+    cleanup:
+      - /include
+      - '*.a'
+      - '*.la'
     sources:
       - type: archive
         url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.3.tar.xz
