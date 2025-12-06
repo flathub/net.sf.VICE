@@ -222,7 +222,16 @@ modules:
         path: net.sf.VICE.C128.desktop
 
       - type: file
+        path: net.sf.VICE.C64DTV.desktop
+
+      - type: file
+        path: net.sf.VICE.SCPU64.desktop
+
+      - type: file
         path: net.sf.VICE.CBM2.desktop
+
+      - type: file
+        path: net.sf.VICE.CBM5x0.desktop
 
       - type: file
         path: net.sf.VICE.PET.desktop
@@ -232,3 +241,6 @@ modules:
 
       - type: file
         path: net.sf.VICE.VIC.desktop
+
+      - type: file
+        path: net.sf.VICE.VSID.desktop
